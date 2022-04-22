@@ -3,7 +3,7 @@ import DefaultImg from "../img/default_thumbnail.svg";
 
 export default function Movie(props) {
   let [moviePoster, setMoviePoster] = useState([]);
-  const apiKey = "78247849b9888da02ffb1655caa3a9b9";
+  const API_KEY = process.env.REACT_APP_MOVIES_API_KEY
   const movieImg = {
     height: "500px",
   };
@@ -14,7 +14,7 @@ export default function Movie(props) {
   };
 
   const fetchPoster = async () => {
-    const url = `https://api.themoviedb.org/3/find/${props.IMDb_id}?api_key=${apiKey}&language=en-US&external_source=imdb_id`;
+    const url = `https://api.themoviedb.org/3/find/${props.IMDb_id}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`;
     const rawData = await fetch(url);
     const data = await rawData.json();
     setMoviePoster(data.movie_results[0].poster_path);

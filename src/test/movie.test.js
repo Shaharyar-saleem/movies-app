@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 const requestMovies = supertest('https://api.netzkino.de.simplecache.net/capi-2.0a/');
 const moviePoster = supertest('https://api.themoviedb.org/3');
-const API_KEY = '78247849b9888da02ffb1655caa3a9b9';
+const API_KEY = process.env.REACT_APP_MOVIES_API_KEY
 
 describe('Movies', () => {
 
