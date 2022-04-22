@@ -9,7 +9,7 @@ export default function SearchBox() {
     const rawData = await fetch(url);
     const movieData = await rawData.json();
     setMovies(movieData.posts);
-  }
+  };
   return (
     <div>
       <div className="container mt-5">
@@ -29,13 +29,19 @@ export default function SearchBox() {
       <div className="container my-4">
         <div className="row">
           <div className="col-md-12 pb-2">
-            <h4><i>{movies.length >= 1 ? `${movies.length} Movies Found` : "Enter Movie Name For Results"}</i></h4>
+            <h4>
+              <i>
+                {movies.length >= 1
+                  ? `${movies.length} Movies Found`
+                  : "Enter Movie Name For Results"}
+              </i>
+            </h4>
           </div>
         </div>
         <div className="row">
-          {movies.map((movie, index) => {  
-              let IMDb_string = movie.custom_fields["IMDb-Link"].toString()
-              let IMDb_id = IMDb_string.split("title/")[1]
+          {movies.map((movie, index) => {
+            let IMDb_string = movie.custom_fields["IMDb-Link"].toString();
+            let IMDb_id = IMDb_string.split("title/")[1];
             return (
               <div className="col-md-4" key={index}>
                 <Movie
